@@ -133,8 +133,6 @@ Boggler::setDictionary(char* fileName){
 
   memset(fileWord,0,sizeof(char[64]));
 
-  
-
   filePtr = fopen(fileName,"r");
 
   if(filePtr == NULL){
@@ -163,11 +161,11 @@ Boggler::setDictionary(char* fileName){
     memset(&newWord,0,sizeof(BoggleWord));
   }
 
-  printf(" %i word(s) had length greater than 16.\n\n",tooLongCount);
+  printf(" %lu word(s) had length greater than 16.\n\n",tooLongCount);
   
   
   fclose(filePtr);
-  delete fileWord;
+  delete[] fileWord;
 
 }
 
@@ -227,7 +225,7 @@ Boggler::solvePuzzle(){
     }
   }
 
-  printf("\n|----- %i solution(s) found, %i node(s) examined -----|\n\n",foundList.size(),nodesChecked);
+  printf("\n|----- %i solution(s) found, %lu node(s) examined -----|\n\n",foundList.size(),nodesChecked);
 
 }
 
